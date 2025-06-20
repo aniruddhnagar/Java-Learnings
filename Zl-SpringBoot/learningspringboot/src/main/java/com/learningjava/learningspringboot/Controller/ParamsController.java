@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/params")
 public class ParamsController {
 
-    // Call: http://localhost:8090/params/fetchUser?firstName=Ruddh&age=30
-    // Call: http://localhost:8090/params/fetchUser?firstName=Ruddh&lastName=Nagar&age=30
+    // Call: http://localhost:8090/params/fetchUser1?firstName=Ruddh&age=30
+    // Call: http://localhost:8090/params/fetchUser1?firstName=Ruddh&lastName=Nagar&age=30
     @GetMapping("/fetchUser1")
     public String getUser(@RequestParam (name = "firstName", required = true) String firstName,
                           @RequestParam (name = "lastName") String lastName,
