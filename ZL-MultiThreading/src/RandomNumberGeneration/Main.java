@@ -1,7 +1,6 @@
 package RandomNumberGeneration;
 
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicLong;
 
 public class Main {
 
@@ -19,9 +18,9 @@ public class Main {
 
         //Unique IDs
         Transaction txn = new Transaction();
-        txn.generateTransactionId();
-        txn.generateTransactionId();
-        txn.generateTransactionId();
-
+        txn.generateTransactionId1();
+        txn.generateTransactionId1();
+        txn.generateTransactionId1();
+        txn.generateTransactionId2();
     }
 }
