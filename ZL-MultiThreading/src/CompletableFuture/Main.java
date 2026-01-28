@@ -7,6 +7,16 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+//Chaining Operations: You can chain multiple asynchronous operations seamlessly.
+    //thenApply(): Executes a function when the previous stage completes.
+    //thenAccept(): Consumes the result (no return value).
+    //thenRun(): Executes a simple action (no input or output).
+
+//Combining Futures: You can combine the results of multiple independent futures.
+    //thenCombine(): Combines two results when both are ready.
+    //allOf(): Waits for all provided futures to complete.
+    //anyOf(): Completes as soon as any one future is finished.
+
 public class Main {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
