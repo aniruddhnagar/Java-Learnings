@@ -1,9 +1,11 @@
 package ThreadPool;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -90,7 +92,6 @@ public class Main {
 
         // -------------------------------------------------------------------------------------------------------------
         // Use of Callable thread:
-        // Other usecase:
 
         ThreadPoolExecutor poolExecutor4 = new ThreadPoolExecutor(1, 1, 1, TimeUnit.HOURS,
         new ArrayBlockingQueue<>(3), Executors.defaultThreadFactory(), new ThreadPoolExecutor.DiscardPolicy());
@@ -104,6 +105,38 @@ public class Main {
         }
 
         poolExecutor4.shutdown();
+
+        // -------------------------------------------------------------------------------------------------------------
+        // Use of Callable thread:
+        // Other usecase:
+
+        // Create an ExecutorService with a fixed thread pool size of 1
+        ExecutorService executor = Executors.newFixedThreadPool(1);
+        System.out.println("Main thread started.");
+
+        // Instantiate the Callable task
+        FactorialTask task = new FactorialTask(20);
+
+        // 3. Submit the Callable task to the executor
+        //    The submit() method immediately returns a Future object.
+        Future<BigInteger> futureResult = executor.submit(task);
+
+        // 4. The Main thread continues its own work while the task runs asynchronously
+        System.out.println("Main thread can do other things while calculation runs...");
+        System.out.println("Checking task status: Is done? " + futureResult.isDone());
+
+        // 5. Retrieve the result using Future.get()
+        //    This call BLOCKS the main thread until the computation is complete.
+        System.out.println("\nWaiting for the result using future.get()...");
+        BigInteger factorial = futureResult.get();
+
+        // Execution reaches here only after the worker thread finishes
+        System.out.println("--- Main thread got the result ---");
+        System.out.println("Factorial of 20 is: " + factorial);
+        System.out.println("Checking task status again: Is done? " + futureResult.isDone());
+
+        // Clean up the executor service
+        executor.shutdown();
     }
 }
 
