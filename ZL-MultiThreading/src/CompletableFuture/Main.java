@@ -21,54 +21,60 @@ public class Main {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(1, 1, 1, TimeUnit.HOURS,
-                new ArrayBlockingQueue<>(3), Executors.defaultThreadFactory(), new ThreadPoolExecutor.DiscardPolicy());
+        System.out.println("[Main] Starting travel booking process...");
 
-        // new thread will be created for all async operations
-        // It provides chaining, it provides a method to be applied on the results by same thread:
-        CompletableFuture<String> futureObj = CompletableFuture.supplyAsync( () -> {
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            return "name: " + Thread.currentThread().getName();
-        }, poolExecutor);
+        // Start the asynchronous chain
+        CompletableFuture<Void> pipeline = CompletableFuture.supplyAsync(() -> {
+                    System.out.println("[Task 1] Fetching flight price...");
+                    simulateDelay(1500); // Simulate network latency
 
-        System.out.println(futureObj.get());
+                    // UNCOMMENT the line below to test the error handling:
+                    // if (true) throw new RuntimeException("Database Connection Timeout!");
 
-        // -------------------------------------------------------------------------------------------------------------
-        // It provides chaining, it provides a method to be applied on the results by same thread:
-        CompletableFuture<String> futureObj2 = CompletableFuture.supplyAsync( () -> {
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            return "name: " + Thread.currentThread().getName();
-        }, poolExecutor);
+                    return 500.0;
+                })
+                /*
+                 * .handle() is better than .exceptionally() because it processes
+                 * BOTH the result (res) and the error (ex) in one step.
+                 */
+                .handle((res, ex) -> {
+                    if (ex != null) {
+                        System.err.println("[Error] Could not fetch price: " + ex.getMessage());
+                        return 0.0; // Return a 'fallback' default value
+                    }
+                    return res; // Pass the successful result forward
+                })
+                .thenApply(price -> {
+                    if (price == 0.0) return 0.0; // Skip discount if error occurred
+                    System.out.println("[Task 2] Applying 10% discount to: $" + price);
+                    return price * 0.9;
+                })
+                .thenAccept(finalPrice -> {
+                    if (finalPrice > 0) {
+                        System.out.println("[Success] Booking confirmed for: $" + finalPrice);
+                    } else {
+                        System.out.println("[Fail] Booking could not be completed.");
+                    }
+                });
 
-        futureObj2 = futureObj2.thenApplyAsync((String val) -> {
-            return val + " - Extra - "  + Thread.currentThread().getName();
-        }, poolExecutor);
+        // The main thread is NOT blocked. It continues while the future runs.
+        System.out.println("[Main] I'm free to do other work while the booking happens!");
 
-        // Chain together dependent Async operation:
-//        futureObj2 = futureObj2.thenCompose((String val) -> {
-//            return CompletableFuture.supplyAsync(() -> val + " - Completable - "  + Thread.currentThread().getName());});
+        for(int i = 1; i <= 3; i++) {
+            System.out.println("[Main] Doing unrelated task #" + i + "...");
+            simulateDelay(500);
+        }
 
-        futureObj2 = futureObj2.thenComposeAsync((String val) -> {
-            return CompletableFuture.supplyAsync(() -> val + " - Completable - "  + Thread.currentThread().getName());}
-        , poolExecutor);
+        // join() ensures the program doesn't exit before the background tasks finish
+        pipeline.join();
 
+        System.out.println("[Main] Program finished.");
+    }
 
-        // will not return anything
-        futureObj2.thenAcceptAsync((String val) -> {
-            System.out.println( val + " - Completable2 - "  + Thread.currentThread().getName());});
-
-        System.out.println(futureObj2.get());
-
-
-        poolExecutor.shutdown();
+    private static void simulateDelay(int ms) {
+        try { TimeUnit.MILLISECONDS.sleep(ms); } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
 }
