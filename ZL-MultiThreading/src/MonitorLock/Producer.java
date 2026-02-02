@@ -14,9 +14,9 @@ public class Producer implements Runnable{
         System.out.println("Inside Producer Thread: " + Thread.currentThread().getName());
         try {
             Thread.sleep(4000);
+            obj.addItem();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        obj.addItem();
     }
 }

@@ -2,6 +2,17 @@ package StampedLock;
 
 import java.util.concurrent.locks.StampedLock;
 
+//    A StampedLock (introduced in Java 8) is an advanced, high-performance alternative to the ReadWriteLock.
+//    It is designed specifically for read-heavy scenarios and provides a unique "Optimistic Reading" mode
+//    that can be significantly faster than traditional locks.
+//
+//    The Three Locking Modes:
+//    Unlike other locks, a StampedLock returns a long value called a stamp. You must provide this exact stamp to release the lock.
+//
+//    Writing Mode: An exclusive lock. Only one thread can hold it, blocking all other readers and writers.
+//    Reading Mode: A pessimistic, shared lock. Multiple threads can read, but they block any writer from starting.
+//    Optimistic Reading: A non-blocking mode where the thread doesn't actually "lock" anything. It reads the data and then calls validate(stamp) to check if a writer modified the data during the read.
+
 public class Main {
 
     public static void main(String[] args) {

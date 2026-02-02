@@ -16,7 +16,7 @@ public class SharedResource {
         System.out.println("R-Locking by: " + Thread.currentThread().getName());
         int a = 10;
         Thread.sleep(5000);
-        if (lock.validate(stamp)) {
+        if (!lock.validate(stamp)) {
             a = 20;
         }
         System.out.println("Value of a: " + a);

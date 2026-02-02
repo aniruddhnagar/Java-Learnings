@@ -5,33 +5,33 @@ import java.util.Queue;
 
 public class SharedResource {
 
-    private Queue<Integer> buffer;
-    private int bufferSize;
+    private Queue<Integer> queue;
+    private int capacity;
 
     SharedResource(int iSize) {
-        this.bufferSize = iSize;
-        buffer = new LinkedList<>();
+        this.capacity = iSize;
+        queue = new LinkedList<>();
     }
 
-    public synchronized void addItem(int iItem) throws InterruptedException {
-        while (buffer.size() == bufferSize) {
-            System.out.println("Inside Resource P: waiting");
-            wait();
+    // PROBLEM: No synchronization here.
+    // Two threads can add/remove at the exact same time.
+    public void produce(int value) {
+        if (queue.size() == capacity) {
+            System.out.println("Buffer full! Producer should wait but can't...");
+            return;
         }
-        System.out.println("Inside Resource P: adding");
-        buffer.add(iItem);
-        notifyAll();
+        queue.add(value);
+        System.out.println("Produced: " + value);
     }
 
-    public synchronized int popItem() throws InterruptedException {
-        while (buffer.isEmpty()) {
-            System.out.println("Inside Resource C: waiting");
-            wait();
+    public int consume() {
+        if (queue.isEmpty()) {
+            System.out.println("Buffer empty! Consumer should wait but can't...");
+            return 0;
         }
-        System.out.println("Inside Resource C: consuming");
-        int i = buffer.poll();
-        notifyAll();
-        return i;
+        int value = queue.poll();
+        System.out.println("Consumed: " + value);
+        return value;
     }
 
 }

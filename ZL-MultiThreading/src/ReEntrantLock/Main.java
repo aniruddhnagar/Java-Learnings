@@ -2,12 +2,23 @@ package ReEntrantLock;
 
 import java.util.concurrent.locks.ReentrantLock;
 
+//1. What does "Reentrant" mean?
+//    It means that if a thread already holds the lock, it can re-acquire it multiple times without getting stuck (deadlocked).
+//    The lock keeps a hold count—each time the thread locks it, the count goes up; each unlock decrements it.
+//    The resource is only freed when the count hits zero.
+//
+//2. Why use it over synchronized?
+//    While synchronized is simple, ReentrantLock offers features for complex scenarios:
+//    Fairness Policy: You can force the lock to give access to the thread that has been waiting the longest.
+//    tryLock(): A thread can check if the lock is available. If it’s not, the thread can do something else instead of blocking indefinitely.
+//    Interruptible Locks: You can allow a waiting thread to be interrupted while it's waiting for the lock.
+
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
         // Create ONE single instance of the shared resource
-        CorrectedLockingExample.SharedCounter counter = new CorrectedLockingExample.SharedCounter();
+        ReenterantLockExample.SharedCounter counter = new ReenterantLockExample.SharedCounter();
 
         // Create multiple threads that all operate on the SAME 'counter' instance
         Thread thread1 = new Thread(counter::increment, "Thread-1");
@@ -28,15 +39,5 @@ public class Main {
 
         System.out.println("\nFinal count value: " + counter.count);
 
-        ReentrantLock lock = new ReentrantLock();
-
-        TaskDriver obj1 = new TaskDriver(lock);
-        TaskDriver obj2 = new TaskDriver(lock);
-
-        Thread tread1 = new Thread(obj1);
-        Thread tread2 = new Thread(obj2);
-
-        tread1.start();
-        tread2.start();
     }
 }

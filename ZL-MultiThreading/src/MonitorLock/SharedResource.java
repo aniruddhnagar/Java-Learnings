@@ -4,9 +4,11 @@ public class SharedResource {
 
     boolean isItemAvailable = false;
 
-    public synchronized void addItem() {
+    public synchronized void addItem() throws InterruptedException {
         System.out.println("Inside Resource: Adding Item");
-        isItemAvailable = true;
+        while(isItemAvailable) {
+            wait();
+        }
         notifyAll();
     }
 

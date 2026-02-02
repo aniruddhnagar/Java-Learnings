@@ -2,6 +2,14 @@ package SemaphoreLock;
 
 import java.util.concurrent.Semaphore;
 
+//    In Java, a Semaphore is a synchronization tool that maintains a set of permits.
+//    It is used to control how many threads can access a specific resource simultaneously.
+//    acquire(): Decrements the number of available permits. If no permits are available, the thread blocks (waits).
+//    release(): Increments the number of permits, potentially unblocking a waiting thread.
+
+//    A Mutex is a locking mechanism for exclusive access,
+//    whereas a Semaphore is a signaling mechanism for managing multiple resource instances.
+
 public class Main {
 
     public static void main(String[] args) {

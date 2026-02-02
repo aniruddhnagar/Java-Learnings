@@ -3,7 +3,7 @@ package ReEntrantLock;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class CorrectedLockingExample {
+public class ReenterantLockExample {
 
     // --- The Shared Resource (Data and the Lock guarding it) ---
     public static class SharedCounter {

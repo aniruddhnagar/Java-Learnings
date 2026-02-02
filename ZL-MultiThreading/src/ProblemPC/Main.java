@@ -1,5 +1,9 @@
 package ProblemPC;
 
+// In Java, the Producer-Consumer Problem occurs when multiple threads share a common resource (buffer)
+// without proper coordination,
+// leading to race conditions, buffer overflow, or buffer underflow.
+
 public class Main {
 
     public static void main(String[] args) {
