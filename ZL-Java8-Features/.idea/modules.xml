@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DefaultAndStaticMethods/DefaultAndStaticMethods.iml" filepath="$PROJECT_DIR$/DefaultAndStaticMethods/DefaultAndStaticMethods.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OptionalClass/OptionalClass.iml" filepath="$PROJECT_DIR$/OptionalClass/OptionalClass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StreamAPIs/StreamAPIs.iml" filepath="$PROJECT_DIR$/StreamAPIs/StreamAPIs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ZL-Java8-Features.iml" filepath="$PROJECT_DIR$/.idea/ZL-Java8-Features.iml" />
+      <module fileurl="file://$PROJECT_DIR$/functionalInterface/functionalInterface.iml" filepath="$PROJECT_DIR$/functionalInterface/functionalInterface.iml" />
+    </modules>
+  </component>
+</project>
