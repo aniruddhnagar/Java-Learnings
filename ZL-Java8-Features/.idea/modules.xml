@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/StreamAPIs/StreamAPIs.iml" filepath="$PROJECT_DIR$/StreamAPIs/StreamAPIs.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ZL-Java8-Features.iml" filepath="$PROJECT_DIR$/.idea/ZL-Java8-Features.iml" />
       <module fileurl="file://$PROJECT_DIR$/functionalInterface/functionalInterface.iml" filepath="$PROJECT_DIR$/functionalInterface/functionalInterface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javaCollections/javaCollections.iml" filepath="$PROJECT_DIR$/javaCollections/javaCollections.iml" />
     </modules>
   </component>
 </project>

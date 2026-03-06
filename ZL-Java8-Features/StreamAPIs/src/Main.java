@@ -19,9 +19,14 @@
 //        With Delimiter: collect(Collectors.joining(", ")) results in "A, B, C"
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -83,5 +88,61 @@ public class Main {
 
         System.out.println("High Salary (>5000): " + partitionedNames.get(true));
         System.out.println("Low Salary (<=5000): " + partitionedNames.get(false));
+
+        //----------------------------------------------
+        // Find the second-highest element
+        List<Integer> num = new ArrayList<>();
+        num = Arrays.asList(5,2,1,4,2,6);
+        Integer ans = num.stream()
+                .sorted(Collections.reverseOrder())
+                .skip(1)
+                .findFirst()
+                .orElse(null);
+        System.out.println(ans);
+
+        //----------------------------------------
+        // Count frequency of characters in a string
+        String input = "abcdbcacdd";
+        // Changed Map types: String (from split) and Long (from counting)
+        Map<String, Long> mp = Arrays.stream(input.split(""))
+                .collect(Collectors.groupingBy(
+                        c -> c,
+                        Collectors.counting()
+                ));
+        System.out.println(mp);
+
+        //-----------------------------------------------
+        // Find duplicate elements
+        List<Integer> num2 = Arrays.asList(5,2,1,4,2,6);
+        Set<Integer> ans2 = num2.stream()
+                .filter(c -> Collections.frequency(num2, c) > 1)
+                .collect(Collectors.toSet());
+        System.out.println("Duplicate:" + ans2);
+
+        //----------------------------
+        List<Integer> num3 = Arrays.asList(5, 2, 1, 4, 2, 6);
+        Set<Integer> seen = new HashSet<>();
+
+        Set<Integer> ans3 = num3.stream()
+                .filter(n -> !seen.add(n)) // .add() returns false if the element is already present
+                .collect(Collectors.toSet());
+
+        System.out.println("Duplicate:" + ans3);
+
+        //--------------------------------------------------
+        // 3. Find the longest string
+        List<String> words = Arrays.asList("apple", "banana", "cherry", "date");
+        String longest = words.stream()
+                .max(Comparator.comparingInt(String::length))
+                .orElse("");
+        System.out.println("Longest string: " + longest);
+
+        //---------------------------------------------------
+        // 4. Sort strings by length
+        List<String> sortedByLength = words.stream()
+                .sorted(Comparator.comparingInt(String::length))
+                .collect(Collectors.toList());
+        System.out.println("Sorted by length: " + sortedByLength);
+
     }
 }
