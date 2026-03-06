@@ -131,15 +131,15 @@ public class Main {
 
         //--------------------------------------------------
         // 3. Find the longest string
-        List<String> words = Arrays.asList("apple", "banana", "cherry", "date");
-        String longest = words.stream()
+        List<String> words1 = Arrays.asList("apple", "banana", "cherry", "date");
+        String longest = words1.stream()
                 .max(Comparator.comparingInt(String::length))
                 .orElse("");
         System.out.println("Longest string: " + longest);
 
         //---------------------------------------------------
         // 4. Sort strings by length
-        List<String> sortedByLength = words.stream()
+        List<String> sortedByLength = words1.stream()
                 .sorted(Comparator.comparingInt(String::length))
                 .collect(Collectors.toList());
         System.out.println("Sorted by length: " + sortedByLength);
