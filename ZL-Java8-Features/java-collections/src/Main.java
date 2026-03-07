@@ -43,289 +43,395 @@ public class Main {
         System.out.println("7. Elements in integerList after Reverse:");
         integerList.forEach(System.out::println);
 
-        /*
-        ============================================================
-        1. ARRAY
-        ============================================================
-        */
-        System.out.println("===== ARRAY =====");
+    /*
+    ============================================================
+    ARRAY
+    ============================================================
+    */
 
-        int[] arr = new int[5]; // defining array
-        arr[0] = 10;
-        arr[1] = 20;
-        arr[2] = 30;
+            System.out.println("===== ARRAY =====");
 
-        System.out.println("Array elements:");
+            int[] arr = {5,2,8,1,9};
 
-        for(int i=0;i<arr.length;i++){
-            System.out.print(arr[i] + " ");
-        }
+            System.out.println("Original Array: " + Arrays.toString(arr));
 
-        System.out.println("\n");
+            // Access element
+            System.out.println("Element at index 2: " + arr[2]);
 
-        /*
-        ============================================================
-        2. ARRAYLIST
-        ============================================================
-        */
+            // Sorting
+            Arrays.sort(arr);
+            System.out.println("Sorted Array: " + Arrays.toString(arr));
 
-        System.out.println("===== ARRAYLIST =====");
+            // Reverse
+            reverseArray(arr);
+            System.out.println("Reversed Array: " + Arrays.toString(arr));
 
-        List<Integer> arrayList = new ArrayList<>();
+            System.out.println();
 
-        arrayList.add(10);
-        arrayList.add(20);
-        arrayList.add(30);
 
-        System.out.println("ArrayList: " + arrayList);
 
-        arrayList.remove(Integer.valueOf(20));
+    /*
+    ============================================================
+    ARRAYLIST
+    ============================================================
+    */
 
-        System.out.println("After removing 20: " + arrayList);
+            System.out.println("===== ARRAYLIST =====");
 
-        System.out.println();
+            List<Integer> list = new ArrayList<>();
 
-        /*
-        ============================================================
-        3. LINKEDLIST
-        ============================================================
-        */
+            // add elements
+            list.add(10);
+            list.add(20);
+            list.add(30);
 
-        System.out.println("===== LINKEDLIST =====");
+            // insert at index
+            list.add(1,15);
 
-        List<Integer> linkedList = new LinkedList<>();
+            System.out.println("ArrayList: " + list);
 
-        linkedList.add(1);
-        linkedList.add(2);
-        linkedList.add(3);
+            // get
+            System.out.println("Element at index 2: " + list.get(2));
 
-        System.out.println("LinkedList: " + linkedList);
+            // set/update
+            list.set(2,99);
 
-        linkedList.add(0, 100);
+            // remove
+            list.remove(Integer.valueOf(15));
 
-        System.out.println("After inserting at index 0: " + linkedList);
+            // contains
+            System.out.println("Contains 30? " + list.contains(30));
 
-        System.out.println();
+            // sort
+            Collections.sort(list);
 
-        /*
-        ============================================================
-        4. STACK
-        ============================================================
-        */
+            // reverse
+            Collections.reverse(list);
 
-        System.out.println("===== STACK =====");
+            System.out.println("After sort + reverse: " + list);
 
-        Stack<Integer> stack = new Stack<>();
-
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
-
-        System.out.println("Stack: " + stack);
-
-        System.out.println("Pop: " + stack.pop());
-
-        System.out.println("Peek: " + stack.peek());
-
-        System.out.println("Stack after operations: " + stack);
-
-        System.out.println();
-
-        /*
-        ============================================================
-        5. QUEUE
-        ============================================================
-        */
-
-        System.out.println("===== QUEUE =====");
-
-        Queue<Integer> queue = new LinkedList<>();
-
-        queue.offer(10);
-        queue.offer(20);
-        queue.offer(30);
-
-        System.out.println("Queue: " + queue);
-
-        System.out.println("Poll: " + queue.poll());
-
-        System.out.println("Peek: " + queue.peek());
-
-        System.out.println("Queue after operations: " + queue);
-
-        System.out.println();
-
-        /*
-        ============================================================
-        6. DEQUE
-        ============================================================
-        */
-
-        System.out.println("===== DEQUE =====");
-
-        Deque<Integer> deque = new ArrayDeque<>();
-
-        deque.addFirst(10);
-        deque.addLast(20);
-        deque.addLast(30);
-
-        System.out.println("Deque: " + deque);
-
-        deque.removeFirst();
-        deque.removeLast();
-
-        System.out.println("Deque after removals: " + deque);
-
-        System.out.println();
-
-        /*
-        ============================================================
-        7. HASHSET
-        ============================================================
-        */
-
-        System.out.println("===== HASHSET =====");
-
-        Set<Integer> hashSet = new HashSet<>();
-
-        hashSet.add(10);
-        hashSet.add(20);
-        hashSet.add(20); // duplicate ignored
-
-        System.out.println("HashSet: " + hashSet);
-
-        System.out.println("Contains 10? " + hashSet.contains(10));
-
-        System.out.println();
-
-        /*
-        ============================================================
-        8. TREESET
-        ============================================================
-        */
-
-        System.out.println("===== TREESET =====");
-
-        Set<Integer> treeSet = new TreeSet<>();
-
-        treeSet.add(30);
-        treeSet.add(10);
-        treeSet.add(20);
-
-        System.out.println("TreeSet (Sorted): " + treeSet);
-
-        System.out.println();
-
-        /*
-        ============================================================
-        9. HASHMAP
-        ============================================================
-        */
-
-        System.out.println("===== HASHMAP =====");
-
-        Map<Integer,String> hashMap = new HashMap<>();
-
-        hashMap.put(1,"One");
-        hashMap.put(2,"Two");
-        hashMap.put(3,"Three");
-
-        System.out.println("HashMap: " + hashMap);
-
-        System.out.println("Get key 2: " + hashMap.get(2));
-
-        hashMap.remove(1);
-
-        System.out.println("After removing key 1: " + hashMap);
-
-        System.out.println();
-
-        /*
-        ============================================================
-        10. TREEMAP
-        ============================================================
-        */
-
-        System.out.println("===== TREEMAP =====");
-
-        Map<Integer,String> treeMap = new TreeMap<>();
-
-        treeMap.put(3,"Three");
-        treeMap.put(1,"One");
-        treeMap.put(2,"Two");
-
-        System.out.println("TreeMap (Sorted by key): " + treeMap);
-
-        System.out.println();
-
-        /*
-        ============================================================
-        11. PRIORITY QUEUE (HEAP)
-        ============================================================
-        */
-
-        System.out.println("===== PRIORITY QUEUE =====");
-
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-
-        pq.offer(30);
-        pq.offer(10);
-        pq.offer(20);
-
-        System.out.println("PriorityQueue: " + pq);
-
-        System.out.println("Poll (smallest): " + pq.poll());
-
-        System.out.println("After poll: " + pq);
-
-        System.out.println();
-
-        /*
-        ============================================================
-        12. CONCURRENTHASHMAP
-        ============================================================
-        */
-
-        System.out.println("===== CONCURRENT HASHMAP =====");
-
-        ConcurrentHashMap<Integer,String> concurrentMap = new ConcurrentHashMap<>();
-
-        concurrentMap.put(1,"A");
-        concurrentMap.put(2,"B");
-
-        System.out.println("ConcurrentHashMap: " + concurrentMap);
-
-        concurrentMap.putIfAbsent(2,"C");
-
-        System.out.println("After putIfAbsent: " + concurrentMap);
-
-        System.out.println();
-
-        /*
-        ============================================================
-        13. COPYONWRITEARRAYLIST
-        ============================================================
-        */
-
-        System.out.println("===== COPYONWRITEARRAYLIST =====");
-
-        CopyOnWriteArrayList<Integer> cowList = new CopyOnWriteArrayList<>();
-
-        cowList.add(1);
-        cowList.add(2);
-        cowList.add(3);
-
-        System.out.println("CopyOnWriteArrayList: " + cowList);
-
-        for(Integer i : cowList){
-            if(i == 2){
-                cowList.add(4); // safe during iteration
+            // iteration
+            for(Integer num : list){
+                System.out.print(num + " ");
             }
-        }
 
-        System.out.println("After modification: " + cowList);
+            System.out.println("\n");
 
-        System.out.println();
+
+
+    /*
+    ============================================================
+    LINKEDLIST
+    ============================================================
+    */
+
+            System.out.println("===== LINKEDLIST =====");
+
+            LinkedList<Integer> linkedList = new LinkedList<>();
+
+            linkedList.add(10);
+            linkedList.addFirst(5);
+            linkedList.addLast(20);
+
+            System.out.println("LinkedList: " + linkedList);
+
+            System.out.println("First: " + linkedList.getFirst());
+            System.out.println("Last: " + linkedList.getLast());
+
+            linkedList.removeFirst();
+            linkedList.removeLast();
+
+            System.out.println("After removals: " + linkedList);
+
+            Collections.reverse(linkedList);
+
+            System.out.println("Reversed: " + linkedList);
+
+            System.out.println();
+
+
+
+    /*
+    ============================================================
+    STACK
+    ============================================================
+    */
+
+            System.out.println("===== STACK =====");
+
+            Stack<Integer> stack = new Stack<>();
+
+            stack.push(10);
+            stack.push(20);
+            stack.push(30);
+
+            System.out.println("Stack: " + stack);
+
+            System.out.println("Peek: " + stack.peek());
+
+            System.out.println("Pop: " + stack.pop());
+
+            System.out.println("Search element 10 position: " + stack.search(10));
+
+            System.out.println("Stack after pop: " + stack);
+
+            System.out.println();
+
+
+
+    /*
+    ============================================================
+    QUEUE
+    ============================================================
+    */
+
+            System.out.println("===== QUEUE =====");
+
+            Queue<Integer> queue = new LinkedList<>();
+
+            queue.offer(10);
+            queue.offer(20);
+            queue.offer(30);
+
+            System.out.println("Queue: " + queue);
+
+            System.out.println("Peek: " + queue.peek());
+
+            System.out.println("Poll: " + queue.poll());
+
+            System.out.println("Queue after poll: " + queue);
+
+            System.out.println();
+
+
+
+    /*
+    ============================================================
+    DEQUE
+    ============================================================
+    */
+
+            System.out.println("===== DEQUE =====");
+
+            Deque<Integer> deque = new ArrayDeque<>();
+
+            deque.addFirst(10);
+            deque.addLast(20);
+            deque.addLast(30);
+
+            System.out.println("Deque: " + deque);
+
+            System.out.println("First: " + deque.peekFirst());
+            System.out.println("Last: " + deque.peekLast());
+
+            deque.removeFirst();
+            deque.removeLast();
+
+            System.out.println("After removals: " + deque);
+
+            System.out.println();
+
+
+
+    /*
+    ============================================================
+    HASHSET
+    ============================================================
+    */
+
+            System.out.println("===== HASHSET =====");
+
+            Set<Integer> hashSet = new HashSet<>();
+
+            hashSet.add(5);
+            hashSet.add(2);
+            hashSet.add(8);
+            hashSet.add(5); // duplicate ignored
+
+            System.out.println("HashSet: " + hashSet);
+
+            System.out.println("Contains 2? " + hashSet.contains(2));
+
+            hashSet.remove(8);
+
+            System.out.println("After remove: " + hashSet);
+
+            System.out.println();
+
+
+
+    /*
+    ============================================================
+    TREESET (SORTED SET)
+    ============================================================
+    */
+
+            System.out.println("===== TREESET =====");
+
+            TreeSet<Integer> treeSet = new TreeSet<>();
+
+            treeSet.add(30);
+            treeSet.add(10);
+            treeSet.add(20);
+
+            System.out.println("Sorted TreeSet: " + treeSet);
+
+            System.out.println("First: " + treeSet.first());
+            System.out.println("Last: " + treeSet.last());
+
+            System.out.println("Higher than 10: " + treeSet.higher(10));
+            System.out.println("Lower than 20: " + treeSet.lower(20));
+
+            System.out.println();
+
+
+
+    /*
+    ============================================================
+    HASHMAP
+    ============================================================
+    */
+
+            System.out.println("===== HASHMAP =====");
+
+            Map<Integer,String> map = new HashMap<>();
+
+            map.put(1,"One");
+            map.put(2,"Two");
+            map.put(3,"Three");
+
+            System.out.println("HashMap: " + map);
+
+            System.out.println("Get key 2: " + map.get(2));
+
+            System.out.println("Contains key 1? " + map.containsKey(1));
+
+            map.remove(3);
+
+            System.out.println("After remove: " + map);
+
+            // Iteration
+            for(Map.Entry<Integer,String> entry : map.entrySet()){
+                System.out.println(entry.getKey() + " -> " + entry.getValue());
+            }
+
+            System.out.println();
+
+
+
+    /*
+    ============================================================
+    TREEMAP (SORTED MAP)
+    ============================================================
+    */
+
+            System.out.println("===== TREEMAP =====");
+
+            TreeMap<Integer,String> treeMap = new TreeMap<>();
+
+            treeMap.put(3,"C");
+            treeMap.put(1,"A");
+            treeMap.put(2,"B");
+
+            System.out.println("Sorted TreeMap: " + treeMap);
+
+            System.out.println("First Entry: " + treeMap.firstEntry());
+            System.out.println("Last Entry: " + treeMap.lastEntry());
+
+            System.out.println("Higher Key than 1: " + treeMap.higherKey(1));
+
+            System.out.println();
+
+
+
+    /*
+    ============================================================
+    PRIORITY QUEUE (HEAP)
+    ============================================================
+    */
+
+            System.out.println("===== PRIORITY QUEUE (MIN HEAP) =====");
+
+            PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+            pq.offer(30);
+            pq.offer(10);
+            pq.offer(20);
+
+            System.out.println("PriorityQueue: " + pq);
+
+            while(!pq.isEmpty()){
+                System.out.println("Poll: " + pq.poll());
+            }
+
+            System.out.println();
+
+
+    /*
+    MAX HEAP USING COMPARATOR
+    */
+
+            System.out.println("===== PRIORITY QUEUE (MAX HEAP) =====");
+
+            PriorityQueue<Integer> maxHeap =
+                    new PriorityQueue<>(Comparator.reverseOrder());
+
+            maxHeap.offer(10);
+            maxHeap.offer(30);
+            maxHeap.offer(20);
+
+            while(!maxHeap.isEmpty()){
+                System.out.println("Poll: " + maxHeap.poll());
+            }
+
+            System.out.println();
+
+
+
+    /*
+    ============================================================
+    CONCURRENTHASHMAP
+    ============================================================
+    */
+
+            System.out.println("===== CONCURRENT HASHMAP =====");
+
+            ConcurrentHashMap<Integer,String> concurrentMap =
+                    new ConcurrentHashMap<>();
+
+            concurrentMap.put(1,"A");
+            concurrentMap.putIfAbsent(2,"B");
+
+            concurrentMap.computeIfPresent(2,(k,v)->v+" updated");
+
+            System.out.println("ConcurrentHashMap: " + concurrentMap);
+
+            System.out.println();
+
+
+
+    /*
+    ============================================================
+    COPYONWRITEARRAYLIST
+    ============================================================
+    */
+
+            System.out.println("===== COPYONWRITEARRAYLIST =====");
+
+            CopyOnWriteArrayList<Integer> cowList =
+                    new CopyOnWriteArrayList<>();
+
+            cowList.add(1);
+            cowList.add(2);
+            cowList.add(3);
+
+            for(Integer num : cowList){
+                if(num == 2){
+                    cowList.add(4); // safe modification
+                }
+            }
+
+            System.out.println("CopyOnWriteArrayList: " + cowList);
 
         /*
         ============================================================
@@ -352,4 +458,27 @@ public class Main {
 
         System.out.println();
     }
+
+    /*
+    ============================================================
+    HELPER METHOD - REVERSE ARRAY
+    ============================================================
+    */
+
+    public static void reverseArray(int[] arr){
+
+        int left = 0;
+        int right = arr.length - 1;
+
+        while(left < right){
+
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+
+            left++;
+            right--;
+        }
+    }
+
 }

@@ -91,8 +91,7 @@ public class Main {
 
         //----------------------------------------------
         // Find the second-highest element
-        List<Integer> num = new ArrayList<>();
-        num = Arrays.asList(5,2,1,4,2,6);
+        List<Integer> num = Arrays.asList(5,2,1,4,2,6);
         Integer ans = num.stream()
                 .sorted(Collections.reverseOrder())
                 .skip(1)
@@ -105,10 +104,7 @@ public class Main {
         String input = "abcdbcacdd";
         // Changed Map types: String (from split) and Long (from counting)
         Map<String, Long> mp = Arrays.stream(input.split(""))
-                .collect(Collectors.groupingBy(
-                        c -> c,
-                        Collectors.counting()
-                ));
+                .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
         System.out.println(mp);
 
         //-----------------------------------------------
