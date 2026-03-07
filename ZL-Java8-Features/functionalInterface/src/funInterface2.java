@@ -1,5 +1,3 @@
-package pck5;
-
 public interface funInterface2 {
 
     default void getColor() {

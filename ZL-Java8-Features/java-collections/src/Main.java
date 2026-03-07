@@ -95,6 +95,7 @@ public class Main {
 
             // set/update
             list.set(2,99);
+            System.out.println("ArrayList: " + list);
 
             // remove
             list.remove(Integer.valueOf(15));
@@ -130,6 +131,7 @@ public class Main {
             LinkedList<Integer> linkedList = new LinkedList<>();
 
             linkedList.add(10);
+            linkedList.add(15);
             linkedList.addFirst(5);
             linkedList.addLast(20);
 
@@ -164,6 +166,7 @@ public class Main {
             stack.push(10);
             stack.push(20);
             stack.push(30);
+            stack.push(40);
 
             System.out.println("Stack: " + stack);
 
@@ -172,6 +175,9 @@ public class Main {
             System.out.println("Pop: " + stack.pop());
 
             System.out.println("Search element 10 position: " + stack.search(10));
+            System.out.println("Search element 20 position: " + stack.search(20));
+            System.out.println("Search element 30 position: " + stack.search(30));
+            System.out.println("Search element 40 position: " + stack.search(40));
 
             System.out.println("Stack after pop: " + stack);
 

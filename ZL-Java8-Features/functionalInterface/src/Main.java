@@ -16,6 +16,7 @@
 //    Predicate	          Conditional check (returns boolean)	 test(T t)	      n -> n % 2 == 0
 //    Function<T, R>	  Transforms T to R	                     apply(T t)	      s -> s.length()
 
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,12 +53,12 @@ public class Main {
 
 
 
-        pck5.SampleClass obj1 = new pck5.SampleClass();
+        SampleClass obj1 = new SampleClass();
         obj1.getSpeed();
         obj1.getColor();
 
         //Lambda expression can only support with Functional interface
-        pck5.funcInterface obj2 = ()-> System.out.println("Speed is 50 km/hr");
+        funcInterface obj2 = ()-> System.out.println("Speed is 50 km/hr");
         obj2.getSpeed();
 
         //Using Reflection to get the metadata of a particular class

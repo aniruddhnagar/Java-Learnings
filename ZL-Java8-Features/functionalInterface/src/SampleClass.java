@@ -1,5 +1,3 @@
-package pck5;
-
 public class SampleClass implements funcInterface{
     @Override
     public void getSpeed() {
