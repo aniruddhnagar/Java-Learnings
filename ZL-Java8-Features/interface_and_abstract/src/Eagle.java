@@ -1,5 +1,3 @@
-package pck4;
-
 public class Eagle extends FlyingBird {
 
     @Override

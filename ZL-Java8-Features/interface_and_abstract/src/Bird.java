@@ -1,5 +1,3 @@
-package pck4;
-
 public interface Bird {
 
     void makeSound();

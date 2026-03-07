@@ -1,5 +1,3 @@
-package pck3;
-
 //enum class can have variables, constructor, methods
 //enum class doesn't extend other classes
 //It cannot be initiated

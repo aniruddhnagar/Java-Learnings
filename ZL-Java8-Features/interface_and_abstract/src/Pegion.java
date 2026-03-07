@@ -1,5 +1,3 @@
-package pck4;
-
 public class Pegion implements Bird, Bird.ColorBirds {
     @Override
     public void makeSound() {

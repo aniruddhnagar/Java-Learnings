@@ -3,11 +3,14 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DefaultAndStaticMethods/DefaultAndStaticMethods.iml" filepath="$PROJECT_DIR$/DefaultAndStaticMethods/DefaultAndStaticMethods.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Generic-classes/Generic-classes.iml" filepath="$PROJECT_DIR$/Generic-classes/Generic-classes.iml" />
       <module fileurl="file://$PROJECT_DIR$/OptionalClass/OptionalClass.iml" filepath="$PROJECT_DIR$/OptionalClass/OptionalClass.iml" />
       <module fileurl="file://$PROJECT_DIR$/StreamAPIs/StreamAPIs.iml" filepath="$PROJECT_DIR$/StreamAPIs/StreamAPIs.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ZL-Java8-Features.iml" filepath="$PROJECT_DIR$/.idea/ZL-Java8-Features.iml" />
+      <module fileurl="file://$PROJECT_DIR$/enum-demo/enum-demo.iml" filepath="$PROJECT_DIR$/enum-demo/enum-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/functionalInterface/functionalInterface.iml" filepath="$PROJECT_DIR$/functionalInterface/functionalInterface.iml" />
-      <module fileurl="file://$PROJECT_DIR$/javaCollections/javaCollections.iml" filepath="$PROJECT_DIR$/javaCollections/javaCollections.iml" />
+      <module fileurl="file://$PROJECT_DIR$/interface_and_abstract/interface_and_abstract.iml" filepath="$PROJECT_DIR$/interface_and_abstract/interface_and_abstract.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java-collections/java-collections.iml" filepath="$PROJECT_DIR$/java-collections/java-collections.iml" />
     </modules>
   </component>
 </project>

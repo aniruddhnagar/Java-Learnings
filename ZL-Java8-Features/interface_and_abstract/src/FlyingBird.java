@@ -1,5 +1,3 @@
-package pck4;
-
 public abstract class FlyingBird implements Bird {
     public abstract void makeFly();
 

@@ -1,5 +1,3 @@
-package pck2;
-
 public class GenericClass3 {
 
     public <T> void display(T val) {

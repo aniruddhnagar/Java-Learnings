@@ -52,12 +52,12 @@ public class Main {
 
 
 
-        SampleClass obj1 = new SampleClass();
+        pck5.SampleClass obj1 = new pck5.SampleClass();
         obj1.getSpeed();
         obj1.getColor();
 
         //Lambda expression can only support with Functional interface
-        funcInterface obj2 = ()-> System.out.println("Speed is 50 km/hr");
+        pck5.funcInterface obj2 = ()-> System.out.println("Speed is 50 km/hr");
         obj2.getSpeed();
 
         //Using Reflection to get the metadata of a particular class

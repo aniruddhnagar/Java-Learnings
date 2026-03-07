@@ -1,5 +1,3 @@
-package pck2;
-
 public class GenericClass<T> {
     T obj1;
 
