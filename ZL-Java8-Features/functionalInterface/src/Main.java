@@ -50,5 +50,24 @@ public class Main {
                 .peek(System.out::println)                  // Output: [ALICE]
                 .collect(Collectors.toList());
 
+
+
+        SampleClass obj1 = new SampleClass();
+        obj1.getSpeed();
+        obj1.getColor();
+
+        //Lambda expression can only support with Functional interface
+        funcInterface obj2 = ()-> System.out.println("Speed is 50 km/hr");
+        obj2.getSpeed();
+
+        //Using Reflection to get the metadata of a particular class
+        Class classObj = SampleClass.class;
+        System.out.println(classObj.getName());
+
+        Method[] methods = classObj.getDeclaredMethods();
+        for(Method method : methods){
+            System.out.println(method);
+        }
+
     }
 }
