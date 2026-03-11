@@ -100,7 +100,7 @@ public class Main {
         Future<List<Integer>> futureObj4 = poolExecutor4.submit(new MyTask(output), output);
 
         try {
-            System.out.println((futureObj4.get()).getFirst());
+            System.out.println(futureObj4.get());
         } catch (Exception e) {
         }
 
