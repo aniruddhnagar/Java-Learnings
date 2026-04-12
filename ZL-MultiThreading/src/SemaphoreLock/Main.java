@@ -15,13 +15,11 @@ public class Main {
     public static void main(String[] args) {
 
         Semaphore lock = new Semaphore(2);
-        SharedResource obj1 = new SharedResource(lock);
-        SharedResource obj2 = new SharedResource(lock);
-        SharedResource obj3 = new SharedResource(lock);
+        SharedResource obj = new SharedResource(lock);
 
         Thread thread1 = new Thread(() -> {
             try {
-                obj1.producer();
+                obj.producer();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -29,7 +27,7 @@ public class Main {
 
         Thread thread2 = new Thread(() -> {
             try {
-                obj2.producer();
+                obj.producer();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -37,7 +35,7 @@ public class Main {
 
         Thread thread3 = new Thread(() -> {
             try {
-                obj3.producer();
+                obj.producer();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
