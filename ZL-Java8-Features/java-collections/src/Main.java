@@ -97,7 +97,9 @@ public class Main {
             list.set(2,99);
             System.out.println("ArrayList: " + list);
 
-            // remove
+            //remove value at index
+            list.remove(2);
+            // remove value
             list.remove(Integer.valueOf(15));
 
             // contains

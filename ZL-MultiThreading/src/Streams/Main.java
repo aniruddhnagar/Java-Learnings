@@ -22,14 +22,14 @@ public class Main {
         Stream<Integer> list3 = sBuilder.build();
 
         List<String> list4 = Stream.of("Hello", "All", "All", "How", "Are", "Are", "You", "Doing")
-                .filter((String name) -> name.length() <= 3)
+                .filter(name -> name.length() <= 3)
                 .distinct()
                 .map(String::toUpperCase)
                 .sorted()
+                .skip(1)  // Skip first, then limit to get a full page of 3
                 .limit(3)
-                .skip(1)
-                .peek(System.out::println)
                 .toList();
+                System.out.println(list4);
         System.out.println("===================================");
 
         Stream.of("Hello", "All", "All", "How", "Are", "Are", "You", "Doing")
